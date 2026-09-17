@@ -51,3 +51,4 @@ userSchema.methods.matchPassword = function (entered){
     return bcrypt.compare(entered, this.password);
 };
 
+export const User  = mongoose.model("User", userSchema);
