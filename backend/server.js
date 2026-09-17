@@ -20,3 +20,24 @@ if(process.env.NODE_ENV !== "production") app.use(morgan("dev"));
 app.get("/api/health", (req, res) =>
     res.json({success:true, status: "ok", service: "TTP CRM API"})
 );
+
+app.use(notFound);
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 8000;
+
+const start = async () => {
+  try {
+    await connectDB();
+    app.listen(PORT, () => {
+      console.log(`TTP CRM API running on http://localhost:${PORT} !!`);
+    });
+  } catch (err) {
+    console.error("Failed to start server:", err.message);
+    process.exit(1);
+  }
+};
+
+start();
+
+export default app;

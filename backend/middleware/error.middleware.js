@@ -1,7 +1,13 @@
-import {ApiError} from "...utils/ApiError.js";
+import { ApiError } from "../utils/ApiError.js";
 
-export const notFound = (req,res,next) =>
-    {next(new ApiError(404,'Route not found -> ${req.method} ${req.originalUrl}'));}
+export const notFound = (req, res, next) => {
+  next(
+    new ApiError(
+      404,
+      `Route not found -> ${req.method} ${req.originalUrl}`
+    )
+  );
+};
 
 // eslint-disable-next-line no-unused-vars
 export const errorHandler = (err, req, res, next) => {
@@ -14,7 +20,7 @@ export const errorHandler = (err, req, res, next) => {
     message = `Invalid ${err.path}: ${err.value}`;
   }
 
-  // Mongoose: duplicate key (e.g. email already registered)
+  // Mongoose: duplicate key
   if (err.code === 11000) {
     statusCode = 409;
     const field = Object.keys(err.keyValue || {})[0] || "field";
