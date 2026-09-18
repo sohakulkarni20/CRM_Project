@@ -23,4 +23,5 @@ router
   .put(updateLead)
   .delete(deleteLead);
 
+router.use(protect);
 export default router;
