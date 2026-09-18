@@ -10,7 +10,7 @@ import leadRoutes from "./routes/lead.route.js";
 import contactRoutes from "./routes/contact.routes.js";
 import noteRoutes from "./routes/note.routes.js";
 import taskRoutes from "./routes/task.routes.js";
-import {aiRoutes} from "./routes/ai.routes.js";
+import aiRoutes from "./routes/ai.routes.js";
 
 ////6aad4a8d831e1baaa62f9990
 
