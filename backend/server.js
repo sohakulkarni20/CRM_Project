@@ -11,7 +11,7 @@ import contactRoutes from "./routes/contact.routes.js";
 import noteRoutes from "./routes/note.routes.js";
 import taskRoutes from "./routes/task.routes.js";
 import aiRoutes from "./routes/ai.routes.js";
-
+import analyticsRoutes from "./routes/analytics.routes.js";
 ////6aad4a8d831e1baaa62f9990
 
 const app = express();
@@ -34,7 +34,7 @@ app.use("/api/contacts", contactRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/ai", aiRoutes);
-
+app.use("/api/analytics", analyticsRoutes);
 app.use(notFound);
 app.use(errorHandler);
 

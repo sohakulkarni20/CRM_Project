@@ -41,15 +41,16 @@ export const getOverview = asyncHandler(async (req, res) => {
     : 0;
 
   const months = lastSixMonths();
-  const trend = months.map(([key, label]) => ({
+
+const trend = months.map(({ key, label }) => ({
     month: label,
     leads: 0,
-    won: 0,
-  }));
+    won: 0
+}));
 
-  const indexByKey = Object.fromEntries(
+const indexByKey = Object.fromEntries(
     months.map((m, i) => [m.key, i])
-  );
+);
 
 for (const l of leads) {
   const d = new Date(l.createdAt);
