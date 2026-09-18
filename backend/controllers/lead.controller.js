@@ -100,3 +100,33 @@ export const deleteLead = asyncHandler(async (req, res) => {
     message: "Lead deleted",
   });
 });
+
+export const reorderLeads = asyncHandler(async (req, res) => {
+  const { updates } = req.body;
+
+  if (!Array.isArray(updates)) {
+    throw new ApiError(400, "updates must be an array");
+  }
+
+  await Promise.all(
+    updates.map((u) =>
+      Lead.updateOne(
+        {
+          _id: u.id,
+          owner: req.user._id,
+        },
+        {
+          $set: {
+            status: u.status,
+            order: u.order,
+          },
+        }
+      )
+    )
+  );
+
+  res.json({
+    success: true,
+    message: "Pipeline updated",
+  });
+});
