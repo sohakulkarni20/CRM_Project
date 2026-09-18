@@ -1,4 +1,4 @@
-import {Contact} from "../models/Contacts.js";
+import {Contact} from "../models/Contact.js";
 import { asyncHandler} from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 
